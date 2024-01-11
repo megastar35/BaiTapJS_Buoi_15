@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Bài tập chính JavaScript buổi 15 </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="container ">
+        <div class="baiTap1 ">
+            <h1>Quản lý tuyển sinh</h1>
+            <div class="baiTap1_top d-flex">
+                <div class="me-4">
+                    <input type="text" class="form-control" name="" id="DiemChuan" aria-describedby="helpId"
+                        placeholder="Điểm chuẩn" />
+                </div>
+                <div class="me-5 mb-3 ">
+                    <select class="form-select form-select-lg" name="" id="KhuVuc">
+                        <option selected>Chọn khu vực</option>
+                        <option value="khuVucX">X</option>
+                        <option value="khuVucA">A</option>
+                        <option value="khuVucB">B</option>
+                        <option value="khuVucC">C</option>
+                    </select>
+                </div>
+                <div class="me-5 mb-3 ">
+                    <select class="form-select form-select-lg" name="" id="DoiTuong">
+                        <option selected>Chọn đối tượng</option>
+                        <option value="doiTuong0">0</option>
+                        <option value="doiTuong1">1</option>
+                        <option value="doiTuong2">2</option>
+                        <option value="doiTuong3">3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="baiTap1_bottom d-flex">
+                <div class="me-4 mb-3">
+                    <input type="text" class="form-control" name="" id="mon1" aria-describedby="helpId"
+                        placeholder="Điểm môn thứ 1" />
+                </div>
+                <div class="me-4 mb-3">
+                    <input type="text" class="form-control" name="" id="mon2" aria-describedby="helpId"
+                        placeholder="Điểm môn thứ 2" />
+                </div>
+                <div class="me-4 mb-3">
+                    <input type="text" class="form-control" name="" id="mon3" aria-describedby="helpId"
+                        placeholder="Điểm môn thứ 3" />
+                </div>
+            </div>
+            <a name="" id="KetQuaDau" class="btn btn-primary" href="#" role="button">Kết quả</a>
+            <!-- thông báo lỗi môn là só âm -->
+
+            <div class="alert alert-danger d-none" role="alert" id="alert_bai1">
+                <strong>Điểm môn phải từ 0 trở lên</strong>
+            </div>
+            <!-- thông báo đã trượt
+            <div class="alert alert-secondary d-none" role="alert" id="alertTruot_bai1">
+                <strong>Tạch! Tạch! Tạch!</strong>
+            </div> -->
+
+        </div>
+        <div class="baiTap2">
+            <h1>Tính tiền điện</h1>
+            <div class="mb-3 d-flex gap-5">
+                <input type="text" class="form-control" name="" id="hoTen" aria-describedby="helpId"
+                    placeholder="Nhập tên" />
+                <input type="number" class="form-control" name="" id="soKW" aria-describedby="helpId"
+                    placeholder="Nhập số KW điện" />
+            </div>
+            <a name="" id="TinhTienDien" class="btn btn-primary" href="#" role="button">Tính tiền</a>
+            <div class="alert alert-primary d-flex gap-1" role="alert">
+                <p class="mb-0" id="TenNguoiTieuThu"></p>
+                <p class="mb-0" id="TongTienDien">Tiền điện</p>
+            </div>
+
+
+        </div>
+        <div class="baiTap3">
+            <h1>Tính Thuế Thu Nhập Cá Nhân</h1>
+            <div class="mb-3 d-flex gap-3">
+                <input type="text" class="form-control" name="" id="hoTen_nguoiNopThue" aria-describedby="helpId"
+                    placeholder="Họ và Tên" />
+                <input type="number" class="form-control" name="" id="thuNhapNam" aria-describedby="helpId"
+                    placeholder="Tổng thu nhập năm" />
+                <input type="number" class="form-control" name="" id="soNguoiPhuThuoc" aria-describedby="helpId"
+                    placeholder="Số người phụ thuộc" />
+            </div>
+            <a name="" id="TinhTienThue" class="btn btn-primary mb-1" role="button">Tính Tiền Thuế</a>
+            <div class="alert alert-primary" id="thueThuNhapCaNhan" role="alert">
+                <strong>Thuế thu nhập cá nhân</strong>
+            </div>
+        </div>
+
+        <div class="baiTap4">
+            <h1>Tính tiền cáp</h1>
+            <div class="mb-3 d-flex gap-4">
+                <div class="mb-3">
+                    <select class="form-select" name="" id="seleLoaiKH" onchange="checkLoaiKhachHang()">
+                        <option selected value="">Chọn loại khách hàng</option>
+                        <option value="NhaDan">Nhà Dân</option>
+                        <option value="DoanhNghiep">Doanh Nghiệp</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="" id="maKhachHang" aria-describedby="helpId"
+                        placeholder="Nhập mã khách hàng" />
+                </div>
+                <div class="mb-3">
+                    <input type="number" class="form-control" name="" id="kenhCaoCap" aria-describedby="helpId"
+                        placeholder="Số kênh cao cấp" />
+                </div>
+            </div>
+            <div class="mb-3">
+                <input type="number" class="form-control d-none" name="" id="soKetNoi" aria-describedby="helpId"
+                    placeholder="Số kết nối" />
+            </div>
+            <a name="" id="tinhTienCap" class="btn btn-primary" role="button">Tính tiền cáp</a>
+            <div class="alert alert-primary" id="tongTienCap" role="alert">
+                <strong>Tổng tiền cáp</strong>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
